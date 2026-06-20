@@ -3,10 +3,15 @@ const LOCAL_ORIGINS = ['http://localhost:5173', 'http://localhost:4173'];
 /** Production Netlify site — also allow any *.netlify.app for preview deploys */
 const PRODUCTION_ORIGIN = 'https://adirebloomtest.netlify.app';
 
+function normalizeOrigin(origin) {
+  if (!origin) return origin;
+  return origin.replace(/\/+$/, '');
+}
+
 function parseEnvOrigins() {
   return (process.env.FRONTEND_URL || '')
     .split(',')
-    .map((o) => o.trim())
+    .map((o) => normalizeOrigin(o.trim()))
     .filter(Boolean);
 }
 
@@ -25,9 +30,10 @@ function getPrimaryFrontendUrl() {
 
 function isAllowedOrigin(origin) {
   if (!origin) return true;
-  if (getAllowedOrigins().includes(origin)) return true;
+  const normalized = normalizeOrigin(origin);
+  if (getAllowedOrigins().includes(normalized)) return true;
   try {
-    const { hostname } = new URL(origin);
+    const { hostname } = new URL(normalized);
     if (hostname.endsWith('.netlify.app')) return true;
   } catch {
     /* ignore invalid origin */
