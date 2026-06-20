@@ -1,0 +1,9 @@
+node_modules
+dist
+.env
+server/.env
+server/data/users.json
+.DS_Store
+*.local
+site img/
+Adire Bloom – Wear Heritage, Bloom with Style.html

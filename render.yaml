@@ -1,0 +1,21 @@
+# Render Blueprint — import at https://dashboard.render.com/blueprints
+# Or create a Web Service manually with root directory: server
+services:
+  - type: web
+    name: adirebloom-api
+    runtime: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: PAYSTACK_SECRET_KEY
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: FRONTEND_URL
+        sync: false
+      - key: PORT
+        value: "4000"
