@@ -3,11 +3,12 @@ const axios = require('axios');
 const crypto = require('crypto');
 const { v4: uuidv4 } = require('uuid');
 const { computeOrderTotals } = require('../lib/discountCodes');
+const { getPrimaryFrontendUrl } = require('../lib/frontendUrl');
 
 const router = express.Router();
 
 const PAYSTACK_SECRET = process.env.PAYSTACK_SECRET_KEY;
-const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
+const FRONTEND_URL = getPrimaryFrontendUrl();
 
 // ─── Guards ──────────────────────────────────────────────────────────────────
 function requirePaystackSecret(req, res, next) {
