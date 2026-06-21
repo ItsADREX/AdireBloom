@@ -1,6 +1,5 @@
 import Header from './Header';
 import Footer from './Footer';
-import LimitedOfferPopup from './LimitedOfferPopup';
 import RewardsPanel from './RewardsPanel';
 
 export default function Layout({ children }) {
@@ -9,7 +8,6 @@ export default function Layout({ children }) {
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />
-      <LimitedOfferPopup />
       <RewardsPanel />
     </div>
   );

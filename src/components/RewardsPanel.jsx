@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Gift, X, ExternalLink, Check } from 'lucide-react';
 import { rewardTasks } from '../data/promotions';
 
@@ -21,13 +21,6 @@ export default function RewardsPanel() {
   const [open, setOpen] = useState(false);
   const [unlocked, setUnlocked] = useState(readUnlocked);
   const [copiedCode, setCopiedCode] = useState('');
-
-  useEffect(() => {
-    if (!localStorage.getItem(PANEL_KEY)) {
-      const timer = window.setTimeout(() => setOpen(true), 12000);
-      return () => window.clearTimeout(timer);
-    }
-  }, []);
 
   const close = () => {
     setOpen(false);

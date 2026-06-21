@@ -112,6 +112,11 @@ export default function Footer() {
           </div>
           <p className="text-xs text-cream-200/30 font-body">Payments secured by Paystack</p>
         </div>
+        <p className="text-center mt-4 text-[0.7rem] text-cream-200/30 font-body">
+          <a href="https://itsadrex.com" target="_blank" rel="noopener noreferrer" className="hover:text-cream-200/50 transition-colors">
+            Made by ITS_ADREX
+          </a>
+        </p>
       </div>
     </footer>
   );
