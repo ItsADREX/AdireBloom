@@ -1,8 +1,7 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import axios from 'axios';
+import { api, ensureApiReady, getApiErrorMessage } from '../lib/api';
 
 const AuthContext = createContext(null);
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 const TOKEN_KEY = 'adirebloom_token';
 
 export function AuthProvider({ children }) {
@@ -32,21 +31,23 @@ export function AuthProvider({ children }) {
       setLoading(false);
       return;
     }
-    axios
-      .get(`${API_BASE}/api/auth/me`, { headers: { Authorization: `Bearer ${token}` } })
+    ensureApiReady()
+      .then(() => api.get('/api/auth/me', { headers: { Authorization: `Bearer ${token}` } }))
       .then(({ data }) => setUser(data.user))
       .catch(() => clearSession())
       .finally(() => setLoading(false));
   }, []);
 
   const register = async (payload) => {
-    const { data } = await axios.post(`${API_BASE}/api/auth/register`, payload);
+    await ensureApiReady();
+    const { data } = await api.post('/api/auth/register', payload);
     persistSession(data.token, data.user);
     return data.user;
   };
 
   const login = async (email, password) => {
-    const { data } = await axios.post(`${API_BASE}/api/auth/login`, { email, password });
+    await ensureApiReady();
+    const { data } = await api.post('/api/auth/login', { email, password });
     persistSession(data.token, data.user);
     return data.user;
   };
@@ -64,6 +65,7 @@ export function AuthProvider({ children }) {
         logout,
         authHeaders,
         getToken,
+        getAuthErrorMessage: getApiErrorMessage,
       }}
     >
       {children}

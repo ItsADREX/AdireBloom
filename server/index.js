@@ -4,6 +4,7 @@ const cors = require('cors');
 const paymentRoutes = require('./routes/payment');
 const authRoutes = require('./routes/auth');
 const { getAllowedOrigins, isAllowedOrigin } = require('./lib/frontendUrl');
+const { ensureDemoUser } = require('./lib/seedDemoUser');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -47,4 +48,5 @@ app.use((err, _req, res, _next) => {
 
 app.listen(PORT, () => {
   console.log(`AdireBloom API running on port ${PORT}`);
+  ensureDemoUser().catch((err) => console.error('Demo user seed failed:', err.message));
 });

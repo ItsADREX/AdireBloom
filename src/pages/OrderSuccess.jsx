@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { CheckCircle, Package, ArrowRight } from 'lucide-react';
-import axios from 'axios';
-
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+import { api, ensureApiReady } from '../lib/api';
 
 export default function OrderSuccess() {
   const [searchParams] = useSearchParams();
@@ -15,8 +13,8 @@ export default function OrderSuccess() {
       setStatus('failed');
       return;
     }
-    axios
-      .get(`${API_BASE}/api/payment/verify/${reference}`)
+    ensureApiReady()
+      .then(() => api.get(`/api/payment/verify/${reference}`))
       .then(({ data }) => setStatus(data.status === 'success' ? 'success' : 'failed'))
       .catch(() => setStatus('failed'));
   }, [reference]);

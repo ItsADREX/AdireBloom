@@ -2,6 +2,8 @@
 
 A premium, production-ready storefront for AdireBloom built with Vite + React + Tailwind CSS, backed by a Node/Express API with Paystack payment integration.
 
+**Client handoff:** see [DOCUMENTATION.md](./DOCUMENTATION.md) for live URLs, demo login, feature list, and deployment guide.
+
 ## Stack
 
 | Layer | Tech |
@@ -9,7 +11,18 @@ A premium, production-ready storefront for AdireBloom built with Vite + React + 
 | Frontend | Vite, React 19, React Router v7, Tailwind CSS v3 |
 | Icons | Lucide React |
 | Backend | Node.js, Express |
+| Auth | JWT + bcrypt (custom API — not Supabase) |
 | Payments | Paystack (initialize + verify + webhook) |
+
+## Live demo
+
+| | URL |
+|---|---|
+| Website | https://adirebloomtest.netlify.app |
+| API | https://adirebloom-api.onrender.com |
+| GitHub | https://github.com/ItsADREX/AdireBloom |
+
+**Demo login:** `demo@adirebloom.com` / `AdireBloom2026!` (live site only)
 
 ## Getting Started
 
@@ -43,8 +56,14 @@ VITE_API_URL=http://localhost:4000
 **Backend (`server/.env`)**
 ```
 PAYSTACK_SECRET_KEY=sk_test_...
+JWT_SECRET=your-long-random-secret
 PORT=4000
-FRONTEND_URL=http://localhost:5173
+FRONTEND_URL=http://localhost:5173,https://adirebloomtest.netlify.app
+```
+
+**Netlify (production frontend)** — set in dashboard, then redeploy:
+```
+VITE_API_URL=https://adirebloom-api.onrender.com
 ```
 
 Get your Paystack keys from: https://dashboard.paystack.com/#/settings/developer

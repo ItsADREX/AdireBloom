@@ -4,9 +4,7 @@ import { Lock, ChevronRight } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { formatPrice } from '../data/products';
 import DiscountCodeField from '../components/DiscountCodeField';
-import axios from 'axios';
-
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+import { api, ensureApiReady } from '../lib/api';
 
 const nigerianStates = [
   'Abia','Adamawa','Akwa Ibom','Anambra','Bauchi','Bayelsa','Benue','Borno',
@@ -62,6 +60,7 @@ export default function Checkout() {
     setServerError('');
 
     try {
+      await ensureApiReady();
       const orderLines = items.map((i) => ({
         productId: i.product.id,
         name: i.product.name,
@@ -70,7 +69,7 @@ export default function Checkout() {
         unitPrice: i.product.price,
       }));
 
-      const { data } = await axios.post(`${API_BASE}/api/payment/initialize`, {
+      const { data } = await api.post('/api/payment/initialize', {
         customer: {
           email: form.email,
           firstName: form.firstName,

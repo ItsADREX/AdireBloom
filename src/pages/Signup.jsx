@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { legalLinks } from '../data/legal';
 
 export default function Signup() {
-  const { register } = useAuth();
+  const { register, getAuthErrorMessage } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from || '/shop';
@@ -48,7 +48,7 @@ export default function Signup() {
       });
       navigate(from, { replace: true });
     } catch (err) {
-      setError(err?.response?.data?.message || 'Registration failed. Please try again.');
+      setError(getAuthErrorMessage(err, 'Registration failed. Please try again.'));
     } finally {
       setLoading(false);
     }
