@@ -7,11 +7,14 @@
     "dev": "vite",
     "dev:server": "cd server && node --watch index.js",
     "build": "vite build",
+    "test": "cd server && npm test",
+    "test:server": "cd server && npm test",
     "sync-assets": "node scripts/sync-assets.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.108.2",
     "axios": "^1.18.0",
     "lucide-react": "^1.21.0",
     "react": "^19.2.6",

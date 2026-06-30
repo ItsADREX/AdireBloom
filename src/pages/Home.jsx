@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Shield, RefreshCw, Truck } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
+import HeroSlider from '../components/HeroSlider';
 import { products, siteAssets } from '../data/products';
 
 const featured = products.filter((p) => p.featured).slice(0, 4);
@@ -42,45 +43,7 @@ const trust = [
 export default function Home() {
   return (
     <>
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src={siteAssets.hero}
-            alt="Adire heritage wear"
-            className="w-full h-full object-cover object-top"
-            fetchPriority="high"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/50 to-transparent" />
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
-          <div className="max-w-2xl">
-            <p className="section-label text-gold-light mb-4 animate-fade-up">
-              New Arrivals — Season Collection
-            </p>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold text-cream-50 leading-tight mb-6 animate-fade-up text-balance">
-              Adire for Every Occasion
-            </h1>
-            <p className="font-body text-base sm:text-lg text-cream-200/80 mb-10 leading-relaxed max-w-lg animate-fade-up">
-              Handcrafted heritage wear rooted in Yoruba artistry. Each piece carries the soul of a tradition — curated for the modern African.
-            </p>
-            <div className="flex flex-wrap gap-4 animate-fade-up">
-              <Link to="/shop" className="btn-primary text-sm">
-                Explore Collection
-                <ArrowRight size={16} />
-              </Link>
-              <Link to="/about" className="btn-outline border-cream-50 text-cream-50 hover:bg-cream-50 hover:text-ink text-sm">
-                Our Story
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-cream-200/50">
-          <span className="text-[10px] font-body tracking-widest uppercase">Scroll</span>
-          <div className="w-px h-12 bg-gradient-to-b from-cream-200/50 to-transparent" />
-        </div>
-      </section>
+      <HeroSlider />
 
       <div className="bg-indigo py-3 overflow-hidden">
         <div className="flex gap-12 animate-none whitespace-nowrap">

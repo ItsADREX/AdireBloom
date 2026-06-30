@@ -43,7 +43,6 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <img
               src={siteAssets.logo}
@@ -64,7 +63,6 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map(({ to, label }) => (
               <NavLink
@@ -83,7 +81,6 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Cart + Mobile Toggle */}
           <div className="flex items-center gap-2 sm:gap-4">
             {isAuthenticated ? (
               <div className="hidden sm:flex items-center gap-2">
@@ -138,7 +135,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Nav */}
       <div
         className={`lg:hidden overflow-hidden transition-all duration-300 ${
           mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'

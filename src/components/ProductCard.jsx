@@ -32,7 +32,6 @@ export default function ProductCard({ product }) {
       to={`/product/${product.id}`}
       className="group block bg-white overflow-hidden card-hover"
     >
-      {/* Image */}
       <div className="relative aspect-[3/4] bg-cream overflow-hidden">
         {!imgLoaded && (
           <div className="absolute inset-0 bg-cream-200 animate-pulse" />
@@ -46,10 +45,8 @@ export default function ProductCard({ product }) {
           onLoad={() => setImgLoaded(true)}
         />
 
-        {/* Overlay actions */}
         <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/10 transition-colors duration-300" />
 
-        {/* Wishlist */}
         <button
           onClick={(e) => { e.preventDefault(); setWished((w) => !w); }}
           className="absolute top-3 right-3 p-2 bg-white/90 backdrop-blur-sm transition-all duration-200 hover:scale-110"
@@ -61,7 +58,6 @@ export default function ProductCard({ product }) {
           />
         </button>
 
-        {/* Badge */}
         {product.badge && (
           <span className={`absolute top-3 left-3 px-2.5 py-1 text-[10px] font-body font-semibold tracking-widest uppercase ${
             product.badge === 'Sale' || product.badge === 'Bestseller'
@@ -94,7 +90,6 @@ export default function ProductCard({ product }) {
         )}
       </div>
 
-      {/* Info */}
       <div className="p-4">
         <p className="text-[10px] font-body font-medium tracking-widest uppercase text-gold mb-1 capitalize">
           {product.category}

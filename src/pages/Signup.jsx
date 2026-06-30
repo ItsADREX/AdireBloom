@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { legalLinks } from '../data/legal';
 
 export default function Signup() {
-  const { register } = useAuth();
+  const { register, getAuthErrorMessage } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from || '/shop';
@@ -19,6 +19,7 @@ export default function Signup() {
     agreedToTerms: false,
   });
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -38,17 +39,23 @@ export default function Signup() {
       return;
     }
     setLoading(true);
+    setError('');
+    setSuccess('');
     try {
-      await register({
+      const result = await register({
         firstName: form.firstName,
         lastName: form.lastName,
         email: form.email,
         password: form.password,
         agreedToTerms: form.agreedToTerms,
       });
+      if (result.needsEmailConfirmation) {
+        setSuccess('Account created. Check your email to confirm, then sign in.');
+        return;
+      }
       navigate(from, { replace: true });
     } catch (err) {
-      setError(err?.response?.data?.message || 'Registration failed. Please try again.');
+      setError(getAuthErrorMessage(err, 'Registration failed. Please try again.'));
     } finally {
       setLoading(false);
     }
@@ -117,7 +124,11 @@ export default function Signup() {
             </span>
           </label>
 
-          {error && (
+          {success && (
+          <p className="text-sm font-body text-indigo bg-indigo/10 border border-indigo/30 px-3 py-2">{success}</p>
+        )}
+
+        {error && (
             <p className="text-sm font-body text-terracotta bg-terracotta/10 border border-terracotta/30 px-3 py-2">{error}</p>
           )}
 

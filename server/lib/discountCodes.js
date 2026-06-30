@@ -1,4 +1,3 @@
-/** Keep in sync with src/data/promotions.js */
 const discountCodes = {
   HERITAGE5: { percentOff: 5, minSubtotal: 25000 },
   BLOOM5: { percentOff: 5, minSubtotal: 0 },

@@ -12,7 +12,6 @@ const values = [
 export default function About() {
   return (
     <>
-      {/* Hero */}
       <section className="relative pt-32 pb-20 overflow-hidden bg-ink text-cream-50">
         <div className="absolute inset-0 opacity-20">
           <img
@@ -32,7 +31,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Story */}
       <section className="py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
@@ -69,7 +67,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Values */}
       <section className="py-20 bg-cream-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
@@ -87,7 +84,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-20">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <p className="section-label mb-3">Join the Movement</p>

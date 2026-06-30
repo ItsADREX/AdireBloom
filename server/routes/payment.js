@@ -1,45 +1,44 @@
 const express = require('express');
-const axios = require('axios');
 const crypto = require('crypto');
 const { v4: uuidv4 } = require('uuid');
 const { computeOrderTotals } = require('../lib/discountCodes');
+const { normalizeCartItems } = require('../lib/catalog');
+const { getPrimaryFrontendUrl } = require('../lib/frontendUrl');
+const paystack = require('../lib/paystack');
+const { requireSession } = require('../middleware/sessionAuth');
+const { paymentInitLimiter, paymentVerifyLimiter } = require('../lib/rateLimiters');
 
 const router = express.Router();
 
-const PAYSTACK_SECRET = process.env.PAYSTACK_SECRET_KEY;
-const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
+const FRONTEND_URL = getPrimaryFrontendUrl();
 
-// ─── Guards ──────────────────────────────────────────────────────────────────
-function requirePaystackSecret(req, res, next) {
-  if (!PAYSTACK_SECRET) {
+function requirePaystackConfigured(req, res, next) {
+  if (!paystack.isConfigured()) {
     console.error('PAYSTACK_SECRET_KEY is not configured');
     return res.status(503).json({ message: 'Payment service not configured. Please contact support.' });
   }
   next();
 }
 
-// ─── Validate cart server-side ────────────────────────────────────────────────
-function computeExpectedTotal(items, discountCode) {
-  try {
-    return computeOrderTotals(items, discountCode).total;
-  } catch {
-    throw new Error('Invalid item data');
-  }
-}
-
-// ─── POST /api/payment/initialize ─────────────────────────────────────────────
-router.post('/initialize', requirePaystackSecret, async (req, res) => {
+router.post('/initialize', paymentInitLimiter, requireSession, requirePaystackConfigured, async (req, res) => {
   try {
     const { customer, shipping, items, total, discountCode } = req.body;
 
-    if (!customer?.email || !items?.length) {
+    if (!customer?.email || !items?.length || !shipping?.address) {
       return res.status(400).json({ message: 'Missing required order fields.' });
     }
 
-    // Server-side total validation — client cannot manipulate the price
+    const checkoutEmail = customer.email.trim().toLowerCase();
+    const accountEmail = (req.user.email || '').trim().toLowerCase();
+    if (accountEmail && checkoutEmail !== accountEmail) {
+      return res.status(403).json({ message: 'Checkout email must match your signed-in account.' });
+    }
+
+    let normalizedItems;
     let expectedTotal;
     try {
-      expectedTotal = computeExpectedTotal(items, discountCode);
+      normalizedItems = normalizeCartItems(items);
+      expectedTotal = computeOrderTotals(normalizedItems, discountCode).total;
     } catch {
       return res.status(400).json({ message: 'Invalid item data in cart.' });
     }
@@ -55,28 +54,18 @@ router.post('/initialize', requirePaystackSecret, async (req, res) => {
       customer_name: `${customer.firstName} ${customer.lastName}`,
       phone: customer.phone,
       shipping_address: `${shipping.address}, ${shipping.city}, ${shipping.state}`,
-      items: items.map((i) => `${i.name} x${i.quantity} (${i.size})`).join(' | '),
+      items: normalizedItems.map((i) => `${i.name} x${i.quantity} (${i.size})`).join(' | '),
       discount_code: discountCode || '',
+      user_id: req.user.id,
     };
 
-    const { data } = await axios.post(
-      'https://api.paystack.co/transaction/initialize',
-      {
-        email: customer.email,
-        amount: Math.round(expectedTotal * 100), // Paystack uses kobo
-        currency: 'NGN',
-        reference,
-        callback_url: `${FRONTEND_URL}/order-success`,
-        metadata,
-        channels: ['card', 'bank', 'ussd', 'bank_transfer'],
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${PAYSTACK_SECRET}`,
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+    const data = await paystack.initializeTransaction({
+      email: customer.email,
+      amountKobo: Math.round(expectedTotal * 100),
+      reference,
+      callbackUrl: `${FRONTEND_URL}/order-success`,
+      metadata,
+    });
 
     if (!data.status || !data.data?.authorization_url) {
       return res.status(502).json({ message: 'Failed to initialize payment with Paystack.' });
@@ -85,29 +74,25 @@ router.post('/initialize', requirePaystackSecret, async (req, res) => {
     return res.json({
       reference: data.data.reference,
       authorizationUrl: data.data.authorization_url,
-      accessCode: data.data.access_code,
     });
   } catch (err) {
+    if (err.code === 'PAYSTACK_NOT_CONFIGURED') {
+      return res.status(503).json({ message: err.message });
+    }
     const paystackMsg = err?.response?.data?.message;
     console.error('Paystack initialize error:', paystackMsg || err.message);
     return res.status(502).json({ message: paystackMsg || 'Payment initialization failed.' });
   }
 });
 
-// ─── GET /api/payment/verify/:reference ───────────────────────────────────────
-router.get('/verify/:reference', requirePaystackSecret, async (req, res) => {
+router.get('/verify/:reference', paymentVerifyLimiter, requireSession, requirePaystackConfigured, async (req, res) => {
   const { reference } = req.params;
   if (!reference || !/^AB-/.test(reference)) {
     return res.status(400).json({ message: 'Invalid payment reference.' });
   }
 
   try {
-    const { data } = await axios.get(
-      `https://api.paystack.co/transaction/verify/${encodeURIComponent(reference)}`,
-      {
-        headers: { Authorization: `Bearer ${PAYSTACK_SECRET}` },
-      }
-    );
+    const data = await paystack.verifyTransaction(reference);
 
     if (!data.status) {
       return res.status(400).json({ status: 'failed', message: 'Transaction not found.' });
@@ -115,15 +100,30 @@ router.get('/verify/:reference', requirePaystackSecret, async (req, res) => {
 
     const txn = data.data;
     const paid = txn.status === 'success';
+    const txnEmail = (txn.customer?.email || '').trim().toLowerCase();
+    const accountEmail = (req.user.email || '').trim().toLowerCase();
+
+    if (paid && accountEmail && txnEmail && txnEmail !== accountEmail) {
+      return res.status(403).json({ status: 'failed', message: 'Not authorized to view this payment.' });
+    }
+
+    const meta = txn.metadata || {};
 
     return res.json({
       status: paid ? 'success' : 'failed',
       reference: txn.reference,
-      amount: txn.amount / 100, // convert from kobo
+      amount: txn.amount / 100,
       currency: txn.currency,
       customerEmail: txn.customer?.email,
       paidAt: txn.paid_at,
       channel: txn.channel,
+      order: {
+        customerName: meta.customer_name || '',
+        phone: meta.phone || '',
+        shippingAddress: meta.shipping_address || '',
+        items: meta.items || '',
+        discountCode: meta.discount_code || '',
+      },
     });
   } catch (err) {
     const paystackMsg = err?.response?.data?.message;
@@ -132,19 +132,17 @@ router.get('/verify/:reference', requirePaystackSecret, async (req, res) => {
   }
 });
 
-// ─── POST /api/payment/webhook ─────────────────────────────────────────────
-// Paystack sends raw JSON. We verify the X-Paystack-Signature header using HMAC-SHA512.
-router.post('/webhook', (req, res) => {
+router.post('/webhook', requirePaystackConfigured, (req, res) => {
   const signature = req.headers['x-paystack-signature'];
-  const secret = PAYSTACK_SECRET;
+  const secret = process.env.PAYSTACK_SECRET_KEY;
 
-  if (!secret || !signature) {
+  if (!signature) {
     return res.status(400).send('Missing signature');
   }
 
   const hash = crypto
     .createHmac('sha512', secret)
-    .update(req.body) // req.body is raw Buffer here
+    .update(req.body)
     .digest('hex');
 
   if (hash !== signature) {
@@ -159,9 +157,7 @@ router.post('/webhook', (req, res) => {
     return res.status(400).send('Invalid JSON');
   }
 
-  // Acknowledge immediately — process async
   res.sendStatus(200);
-
   handleWebhookEvent(event);
 });
 
@@ -173,8 +169,7 @@ async function handleWebhookEvent(event) {
       const ref = data.reference;
       const amount = data.amount / 100;
       const email = data.customer?.email;
-      console.log(`✓ Payment confirmed — ${ref} | ₦${amount.toLocaleString('en-NG')} | ${email}`);
-      // TODO: persist order to database, send confirmation email, update inventory
+      console.log(`Payment confirmed — ${ref} | ₦${amount.toLocaleString('en-NG')} | ${email}`);
       break;
     }
     case 'transfer.success':

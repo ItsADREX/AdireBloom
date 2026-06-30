@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "color": {
+      "palette": [
+        { "slug": "cream", "color": "#faf3e0", "name": "Cream" },
+        { "slug": "cream-50", "color": "#fdfaf4", "name": "Cream Light" },
+        { "slug": "indigo", "color": "#2e0f6e", "name": "Indigo" },
+        { "slug": "indigo-mid", "color": "#4b1fa8", "name": "Indigo Mid" },
+        { "slug": "terracotta", "color": "#c2714f", "name": "Terracotta" },
+        { "slug": "gold", "color": "#c9a84c", "name": "Gold" },
+        { "slug": "ink", "color": "#1a1a2e", "name": "Ink" },
+        { "slug": "white", "color": "#ffffff", "name": "White" }
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "fontFamily": "\"Cormorant Garamond\", Georgia, serif",
+          "slug": "display",
+          "name": "Display"
+        },
+        {
+          "fontFamily": "\"DM Sans\", system-ui, sans-serif",
+          "slug": "body",
+          "name": "Body"
+        }
+      ]
+    },
+    "layout": {
+      "contentSize": "1280px",
+      "wideSize": "1400px"
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "#faf3e0",
+      "text": "#1a1a2e"
+    },
+    "typography": {
+      "fontFamily": "\"DM Sans\", system-ui, sans-serif",
+      "fontSize": "16px"
+    }
+  }
+}

@@ -1,4 +1,3 @@
-/** Active limited-time offer shown in the site popup */
 export const limitedTimeOffer = {
   id: 'heritage-week-2026',
   title: 'Heritage Week Special',
@@ -9,7 +8,6 @@ export const limitedTimeOffer = {
   expiresLabel: 'Limited time — while stocks last',
 };
 
-/** Task-based rewards — modest discounts unlocked after visiting social profiles */
 export const rewardTasks = [
   {
     id: 'follow-instagram',
@@ -29,7 +27,6 @@ export const rewardTasks = [
   },
 ];
 
-/** All redeemable codes — validated client-side and on the payment server */
 export const discountCodes = {
   HERITAGE5: { percentOff: 5, minSubtotal: 25000, label: 'Heritage Week' },
   BLOOM5: { percentOff: 5, minSubtotal: 0, label: 'Instagram follower reward' },

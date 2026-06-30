@@ -41,7 +41,6 @@ export default function Shop() {
 
   return (
     <>
-      {/* Page header */}
       <section className="pt-32 pb-12 bg-cream-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="section-label mb-3">AdireBloom Store</p>
@@ -54,9 +53,7 @@ export default function Shop() {
 
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Filters bar */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
-            {/* Category pills */}
             <div className="flex items-center gap-2 flex-wrap">
               {categories.map(({ id, label }) => (
                 <button
@@ -73,7 +70,6 @@ export default function Shop() {
               ))}
             </div>
 
-            {/* Sort + count */}
             <div className="flex items-center gap-4 flex-shrink-0">
               <span className="text-xs font-body text-ink/50">{visible.length} piece{visible.length !== 1 ? 's' : ''}</span>
               <select
@@ -88,7 +84,6 @@ export default function Shop() {
             </div>
           </div>
 
-          {/* Grid */}
           {visible.length === 0 ? (
             <div className="text-center py-24">
               <p className="font-display text-2xl text-ink/30 mb-4">No pieces found</p>

@@ -26,9 +26,7 @@ export default function LimitedOfferPopup() {
       await navigator.clipboard.writeText(limitedTimeOffer.code);
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
-    } catch {
-      /* clipboard unavailable */
-    }
+    } catch {}
   };
 
   if (!visible) return null;

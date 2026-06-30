@@ -31,7 +31,6 @@ export default function Cart() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Items */}
           <div className="lg:col-span-2 space-y-6">
             {items.map(({ key, product, size, quantity }) => (
               <div key={key} className="flex gap-5 pb-6 border-b border-cream-200">
@@ -79,7 +78,6 @@ export default function Cart() {
             ))}
           </div>
 
-          {/* Summary */}
           <div>
             <div className="bg-cream-100 p-6 lg:p-8 sticky top-24">
               <h2 className="font-display text-xl font-semibold text-ink mb-6">Order Summary</h2>

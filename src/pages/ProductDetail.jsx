@@ -54,7 +54,6 @@ export default function ProductDetail() {
   return (
     <>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
-        {/* Back */}
         <button
           onClick={() => navigate(-1)}
           className="inline-flex items-center gap-2 text-xs font-body uppercase tracking-widest text-ink/50 hover:text-indigo transition-colors mb-8"
@@ -63,7 +62,6 @@ export default function ProductDetail() {
         </button>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-          {/* Images */}
           <div>
             <div className="aspect-[4/5] bg-cream overflow-hidden mb-4">
               <img
@@ -89,14 +87,12 @@ export default function ProductDetail() {
             )}
           </div>
 
-          {/* Details */}
           <div>
             <p className="section-label mb-2 capitalize">{product.category}</p>
             <h1 className="font-display text-3xl md:text-4xl font-semibold text-ink mb-4 leading-tight">
               {product.name}
             </h1>
 
-            {/* Price */}
             <div className="flex items-center gap-3 mb-6">
               <span className="font-body text-2xl font-semibold text-ink">
                 {formatPrice(product.price)}
@@ -119,7 +115,6 @@ export default function ProductDetail() {
 
             <AuthGateBanner />
 
-            {/* Size */}
             <div className="mb-6">
               <div className="flex items-center justify-between mb-3">
                 <p className="text-xs font-body font-semibold uppercase tracking-widest text-ink">Select Size</p>
@@ -179,7 +174,6 @@ export default function ProductDetail() {
               </div>
             )}
 
-            {/* Proceed to cart if added */}
             {added && (
               <div className="flex gap-3 mb-6 animate-fade-in">
                 <Link to="/cart" className="btn-outline text-xs flex-1 text-center">View Cart</Link>
@@ -187,7 +181,6 @@ export default function ProductDetail() {
               </div>
             )}
 
-            {/* Care instructions accordion */}
             <div className="border-t border-cream-200 pt-4">
               <button
                 onClick={() => setCareOpen((o) => !o)}
@@ -215,7 +208,6 @@ export default function ProductDetail() {
           </div>
         </div>
 
-        {/* Related */}
         {related.length > 0 && (
           <div className="mt-20">
             <div className="mb-10">

@@ -1,0 +1,129 @@
+Type,SKU,Name,Published,Is featured?,Visibility in catalog,Short description,Description,Regular price,Sale price,Categories,Images,Parent,Attribute 1 name,Attribute 1 value(s),Attribute 1 visible,Attribute 1 global
+variable,AB-928,ADIRE BAGGY TROUSER (WITH SIDE POCKETS),1,1,visible,RELAXED-FIT SHORTS THAT OFFER COMFORT AND A TRENDY STREETWEAR VIBE.,"RELAXED-FIT SHORTS THAT OFFER COMFORT AND A TRENDY STREETWEAR VIBE.
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Bespoke Wears,adire-baggy-trouser-with-side-pockets.png,,Size,"S, M, L, XL, XXL",1,1
+variation,AB-928-S,,1,0,visible,,,15000,13000,,,ADIRE BAGGY TROUSER (WITH SIDE POCKETS),Size,S,1,1
+variation,AB-928-M,,1,0,visible,,,15000,13000,,,ADIRE BAGGY TROUSER (WITH SIDE POCKETS),Size,M,1,1
+variation,AB-928-L,,1,0,visible,,,15000,13000,,,ADIRE BAGGY TROUSER (WITH SIDE POCKETS),Size,L,1,1
+variation,AB-928-XL,,1,0,visible,,,15000,13000,,,ADIRE BAGGY TROUSER (WITH SIDE POCKETS),Size,XL,1,1
+variation,AB-928-XXL,,1,0,visible,,,15000,13000,,,ADIRE BAGGY TROUSER (WITH SIDE POCKETS),Size,XXL,1,1
+variable,AB-688,ADIRE BAGGY TROUSER (WITHOUT SIDE POCKETS),1,0,visible,RELAXED-FIT SHORTS THAT OFFER COMFORT AND A TRENDY STREETWEAR VIBE.,"RELAXED-FIT SHORTS THAT OFFER COMFORT AND A TRENDY STREETWEAR VIBE.
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Bespoke Wears,adire-baggy-trouser.png,,Size,"S, M, L, XL, XXL",1,1
+variation,AB-688-S,,1,0,visible,,,9000,8000,,,ADIRE BAGGY TROUSER (WITHOUT SIDE POCKETS),Size,S,1,1
+variation,AB-688-M,,1,0,visible,,,9000,8000,,,ADIRE BAGGY TROUSER (WITHOUT SIDE POCKETS),Size,M,1,1
+variation,AB-688-L,,1,0,visible,,,9000,8000,,,ADIRE BAGGY TROUSER (WITHOUT SIDE POCKETS),Size,L,1,1
+variation,AB-688-XL,,1,0,visible,,,9000,8000,,,ADIRE BAGGY TROUSER (WITHOUT SIDE POCKETS),Size,XL,1,1
+variation,AB-688-XXL,,1,0,visible,,,9000,8000,,,ADIRE BAGGY TROUSER (WITHOUT SIDE POCKETS),Size,XXL,1,1
+variable,AB-718,Adire Eleso,1,0,visible,Handcrafted Adire piece from AdireBloom.,"Handcrafted Adire piece from AdireBloom.
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Tie & Dye Fabrics,adire-eleso.jpg,,Size,"3 yards, 6 yards",1,1
+variation,AB-718-3-yards,,1,0,visible,,,17000,15000,,,Adire Eleso,Size,3 yards,1,1
+variation,AB-718-6-yards,,1,0,visible,,,17000,15000,,,Adire Eleso,Size,6 yards,1,1
+variable,AB-717,Adire Onimoto,1,0,visible,Handcrafted Adire piece from AdireBloom.,"Handcrafted Adire piece from AdireBloom.
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Tie & Dye Fabrics,adire-onimoto.jpg,,Size,"3 yards, 6 yards",1,1
+variation,AB-717-3-yards,,1,0,visible,,,16000,15000,,,Adire Onimoto,Size,3 yards,1,1
+variation,AB-717-6-yards,,1,0,visible,,,16000,15000,,,Adire Onimoto,Size,6 yards,1,1
+variable,AB-720,Customized batik,1,0,visible,price on order,"price on order
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Batik,customized-batik-2.jpg,,Size,"3 yards, 6 yards",1,1
+variation,AB-720-3-yards,,1,0,visible,,,,,,,Customized batik,Size,3 yards,1,1
+variation,AB-720-6-yards,,1,0,visible,,,,,,,Customized batik,Size,6 yards,1,1
+variable,AB-654,CUSTOMIZED BATIK,1,0,visible,"ANY STYLE, IDEAS, WHATEVER YOUR INSPIRATION IS, SHOWCASING ON YOUR FABRICS","ANY STYLE, IDEAS, WHATEVER YOUR INSPIRATION IS, SHOWCASING ON YOUR FABRICS
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Batik,customized-batik.jpg,,Size,"3 yards, 6 yards",1,1
+variation,AB-654-3-yards,,1,0,visible,,,,,,,CUSTOMIZED BATIK,Size,3 yards,1,1
+variation,AB-654-6-yards,,1,0,visible,,,,,,,CUSTOMIZED BATIK,Size,6 yards,1,1
+variable,AB-682,CUSTOMIZED HERITAGE TOPS,1,0,visible,"VIBRANT TOPS FEATURING CREATIVE BLENDS OF COLORS, PERFECT FOR A STANDOUT CASUAL LOOK.","VIBRANT TOPS FEATURING CREATIVE BLENDS OF COLORS, PERFECT FOR A STANDOUT CASUAL LOOK.
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Bespoke Wears,customized-heritage-tops.png,,Size,"S, M, L, XL, XXL",1,1
+variation,AB-682-S,,1,0,visible,,,9000,8000,,,CUSTOMIZED HERITAGE TOPS,Size,S,1,1
+variation,AB-682-M,,1,0,visible,,,9000,8000,,,CUSTOMIZED HERITAGE TOPS,Size,M,1,1
+variation,AB-682-L,,1,0,visible,,,9000,8000,,,CUSTOMIZED HERITAGE TOPS,Size,L,1,1
+variation,AB-682-XL,,1,0,visible,,,9000,8000,,,CUSTOMIZED HERITAGE TOPS,Size,XL,1,1
+variation,AB-682-XXL,,1,0,visible,,,9000,8000,,,CUSTOMIZED HERITAGE TOPS,Size,XXL,1,1
+variable,AB-681,CUSTOMIZED MULTICOLOURED POLO,1,0,visible,"VIBRANT TOPS FEATURING CREATIVE BLENDS OF COLORS, PERFECT FOR A STANDOUT CASUAL LOOK.","VIBRANT TOPS FEATURING CREATIVE BLENDS OF COLORS, PERFECT FOR A STANDOUT CASUAL LOOK.
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Bespoke Wears,customized-multicoloured-polo.jpg,,Size,"S, M, L, XL, XXL",1,1
+variation,AB-681-S,,1,0,visible,,,11000,10000,,,CUSTOMIZED MULTICOLOURED POLO,Size,S,1,1
+variation,AB-681-M,,1,0,visible,,,11000,10000,,,CUSTOMIZED MULTICOLOURED POLO,Size,M,1,1
+variation,AB-681-L,,1,0,visible,,,11000,10000,,,CUSTOMIZED MULTICOLOURED POLO,Size,L,1,1
+variation,AB-681-XL,,1,0,visible,,,11000,10000,,,CUSTOMIZED MULTICOLOURED POLO,Size,XL,1,1
+variation,AB-681-XXL,,1,0,visible,,,11000,10000,,,CUSTOMIZED MULTICOLOURED POLO,Size,XXL,1,1
+variable,AB-658,FLORAL DESIGN,1,1,visible,"BATIK FABRICS WITH FLORAL MOTIF,IDEAL FOR LIVELY AND CHEERFUL OUTFITS","BATIK FABRICS WITH FLORAL MOTIF,IDEAL FOR LIVELY AND CHEERFUL OUTFITS
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Batik,floral-design.jpg,,Size,"3 yards, 6 yards",1,1
+variation,AB-658-3-yards,,1,0,visible,,,16000,15000,,,FLORAL DESIGN,Size,3 yards,1,1
+variation,AB-658-6-yards,,1,0,visible,,,16000,15000,,,FLORAL DESIGN,Size,6 yards,1,1
+variable,AB-715,GOWN,1,0,visible,Handcrafted Adire piece from AdireBloom.,"Handcrafted Adire piece from AdireBloom.
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Gowns,gowm.jpg,,Size,"S, M, L, XL, XXL",1,1
+variation,AB-715-S,,1,0,visible,,,13000,12000,,,GOWN,Size,S,1,1
+variation,AB-715-M,,1,0,visible,,,13000,12000,,,GOWN,Size,M,1,1
+variation,AB-715-L,,1,0,visible,,,13000,12000,,,GOWN,Size,L,1,1
+variation,AB-715-XL,,1,0,visible,,,13000,12000,,,GOWN,Size,XL,1,1
+variation,AB-715-XXL,,1,0,visible,,,13000,12000,,,GOWN,Size,XXL,1,1
+variable,AB-686,GOWN,1,1,visible,"Vibrant tops featuring creative blends of colors, perfect for a standout casual look.","Vibrant tops featuring creative blends of colors, perfect for a standout casual look.
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Gowns,gown.png,,Size,"S, M, L, XL, XXL",1,1
+variation,AB-686-S,,1,0,visible,,,13000,12000,,,GOWN,Size,S,1,1
+variation,AB-686-M,,1,0,visible,,,13000,12000,,,GOWN,Size,M,1,1
+variation,AB-686-L,,1,0,visible,,,13000,12000,,,GOWN,Size,L,1,1
+variation,AB-686-XL,,1,0,visible,,,13000,12000,,,GOWN,Size,XL,1,1
+variation,AB-686-XXL,,1,0,visible,,,13000,12000,,,GOWN,Size,XXL,1,1
+variable,AB-662,GUINEA BROCADE V1,1,0,visible,High Quality fabrics with classic designs,"High Quality fabrics with classic designs
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Tie & Dye Fabrics,guinea-brocade-v1.jpg,,Size,"3 yards, 6 yards",1,1
+variation,AB-662-3-yards,,1,0,visible,,,32000,30000,,,GUINEA BROCADE V1,Size,3 yards,1,1
+variation,AB-662-6-yards,,1,0,visible,,,32000,30000,,,GUINEA BROCADE V1,Size,6 yards,1,1
+variable,AB-719,Marble Design,1,0,visible,Handcrafted Adire piece from AdireBloom.,"Handcrafted Adire piece from AdireBloom.
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Tie & Dye Fabrics,marble-design.jpg,,Size,"3 yards, 6 yards",1,1
+variation,AB-719-3-yards,,1,0,visible,,,14900,12500,,,Marble Design,Size,3 yards,1,1
+variation,AB-719-6-yards,,1,0,visible,,,14900,12500,,,Marble Design,Size,6 yards,1,1
+variable,AB-666,PATTERN BATIK,1,0,visible,"– PREMIUM QUALITY BATIK FABRIC WITH A SHINY FINISH AND ELEGANT WOVEN PATTERNS, PERFECT FOR TRADITIONAL AND CEREMONIAL OUTFITS.","– PREMIUM QUALITY BATIK FABRIC WITH A SHINY FINISH AND ELEGANT WOVEN PATTERNS, PERFECT FOR TRADITIONAL AND CEREMONIAL OUTFITS.
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Batik,pattern-batik.jpg,,Size,"3 yards, 6 yards",1,1
+variation,AB-666-3-yards,,1,0,visible,,,17000,16000,,,PATTERN BATIK,Size,3 yards,1,1
+variation,AB-666-6-yards,,1,0,visible,,,17000,16000,,,PATTERN BATIK,Size,6 yards,1,1
+variable,AB-652,PLAIN &PATTERN DESIGN,1,0,visible,Handcrafted Adire piece from AdireBloom.,"Handcrafted Adire piece from AdireBloom.
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Tie & Dye Fabrics,plain-pattern-design.jpg,,Size,"3 yards, 6 yards",1,1
+variation,AB-652-3-yards,,1,0,visible,,,19000,18000,,,PLAIN &PATTERN DESIGN,Size,3 yards,1,1
+variation,AB-652-6-yards,,1,0,visible,,,19000,18000,,,PLAIN &PATTERN DESIGN,Size,6 yards,1,1
+variable,AB-647,SILK TIE AND DYE,1,0,visible,"SMOOTH, SOFT, SHINY TIE DYE MATERIALS","SMOOTH, SOFT, SHINY TIE DYE MATERIALS
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Tie & Dye Fabrics,silk-tie-and-dye.jpg,,Size,"3 yards, 6 yards",1,1
+variation,AB-647-3-yards,,1,0,visible,,,17000,16000,,,SILK TIE AND DYE,Size,3 yards,1,1
+variation,AB-647-6-yards,,1,0,visible,,,17000,16000,,,SILK TIE AND DYE,Size,6 yards,1,1
+variable,AB-722,THREAD PATTERN DESIGN,1,0,visible,Handcrafted Adire piece from AdireBloom.,"Handcrafted Adire piece from AdireBloom.
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Tie & Dye Fabrics,thread-pattern-design-3.jpg,,Size,"3 yards, 6 yards",1,1
+variation,AB-722-3-yards,,1,0,visible,,,16000,15000,,,THREAD PATTERN DESIGN,Size,3 yards,1,1
+variation,AB-722-6-yards,,1,0,visible,,,16000,15000,,,THREAD PATTERN DESIGN,Size,6 yards,1,1
+variable,AB-721,THREAD PATTERN DESIGN,1,0,visible,Handcrafted Adire piece from AdireBloom.,"Handcrafted Adire piece from AdireBloom.
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Tie & Dye Fabrics,thread-pattern-design.jpg,,Size,"3 yards, 6 yards",1,1
+variation,AB-721-3-yards,,1,0,visible,,,16000,15000,,,THREAD PATTERN DESIGN,Size,3 yards,1,1
+variation,AB-721-6-yards,,1,0,visible,,,16000,15000,,,THREAD PATTERN DESIGN,Size,6 yards,1,1
+variable,AB-641,THREAD PATTERN DESIGN,1,0,visible,Handcrafted Adire piece from AdireBloom.,"Handcrafted Adire piece from AdireBloom.
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Tie & Dye Fabrics,thread-pattern-design-2.jpg,,Size,"3 yards, 6 yards",1,1
+variation,AB-641-3-yards,,1,0,visible,,,16000,15000,,,THREAD PATTERN DESIGN,Size,3 yards,1,1
+variation,AB-641-6-yards,,1,0,visible,,,16000,15000,,,THREAD PATTERN DESIGN,Size,6 yards,1,1
+variable,AB-646,V SHAPE PATTERN DESIGN,1,0,visible,STYLISH TIE DYE WITH BOLD V SHAPED MOTIFS GIVING A SHARP AND TRENDY LOOK,"STYLISH TIE DYE WITH BOLD V SHAPED MOTIFS GIVING A SHARP AND TRENDY LOOK
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Tie & Dye Fabrics,v-shape-pattern-design.jpg,,Size,"3 yards, 6 yards",1,1
+variation,AB-646-3-yards,,1,0,visible,,,16000,15000,,,V SHAPE PATTERN DESIGN,Size,3 yards,1,1
+variation,AB-646-6-yards,,1,0,visible,,,16000,15000,,,V SHAPE PATTERN DESIGN,Size,6 yards,1,1
+variable,AB-668,WAX PRINT ADIRE V1,1,1,visible,"BOLD, COLORFUL FABRIC WITH VIBRANT AFRICAN-INSPIRED PATTERNS, IDEAL FOR STYLISH TRADITIONAL AND MODERN WEAR.","BOLD, COLORFUL FABRIC WITH VIBRANT AFRICAN-INSPIRED PATTERNS, IDEAL FOR STYLISH TRADITIONAL AND MODERN WEAR.
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Tie & Dye Fabrics,wax-print-adire-v2.jpg,,Size,"3 yards, 6 yards",1,1
+variation,AB-668-3-yards,,1,0,visible,,,9000,7000,,,WAX PRINT ADIRE V1,Size,3 yards,1,1
+variation,AB-668-6-yards,,1,0,visible,,,9000,7000,,,WAX PRINT ADIRE V1,Size,6 yards,1,1
+variable,AB-667,WAX PRINT ADIRE V2,1,0,visible,"BOLD, COLORFUL FABRIC WITH VIBRANT AFRICAN-INSPIRED PATTERNS, IDEAL FOR STYLISH TRADITIONAL AND MODERN WEAR.","BOLD, COLORFUL FABRIC WITH VIBRANT AFRICAN-INSPIRED PATTERNS, IDEAL FOR STYLISH TRADITIONAL AND MODERN WEAR.
+
+Care: Hand wash in cold water or dry clean. Store in a cool, dry place away from direct sunlight.",,,Tie & Dye Fabrics,wax-print-adire-v1.jpg,,Size,"3 yards, 6 yards",1,1
+variation,AB-667-3-yards,,1,0,visible,,,8000,7000,,,WAX PRINT ADIRE V2,Size,3 yards,1,1
+variation,AB-667-6-yards,,1,0,visible,,,8000,7000,,,WAX PRINT ADIRE V2,Size,6 yards,1,1

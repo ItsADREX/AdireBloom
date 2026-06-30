@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 export default function Login() {
-  const { login } = useAuth();
+  const { login, getAuthErrorMessage } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from || '/shop';
@@ -20,7 +20,7 @@ export default function Login() {
       await login(form.email, form.password);
       navigate(from, { replace: true });
     } catch (err) {
-      setError(err?.response?.data?.message || 'Invalid email or password.');
+      setError(getAuthErrorMessage(err, 'Invalid email or password.'));
     } finally {
       setLoading(false);
     }

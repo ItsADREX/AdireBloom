@@ -31,7 +31,6 @@ export default function Footer() {
     <footer className="bg-ink text-cream-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-          {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="inline-block mb-4">
               <img src={siteAssets.logo} alt="AdireBloom" className="h-16 w-auto object-contain brightness-0 invert opacity-90" />
@@ -49,7 +48,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Shop */}
           <div>
             <h4 className="font-body text-xs font-semibold tracking-widest uppercase text-gold mb-5">Shop</h4>
             <ul className="space-y-3">
@@ -63,7 +61,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Info */}
           <div>
             <h4 className="font-body text-xs font-semibold tracking-widest uppercase text-gold mb-5">Information</h4>
             <ul className="space-y-3">
@@ -77,7 +74,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter */}
           <div>
             <h4 className="font-body text-xs font-semibold tracking-widest uppercase text-gold mb-5">Stay Connected</h4>
             <p className="text-sm text-cream-200/70 font-body mb-4 leading-relaxed">
@@ -112,6 +108,11 @@ export default function Footer() {
           </div>
           <p className="text-xs text-cream-200/30 font-body">Payments secured by Paystack</p>
         </div>
+        <p className="text-center mt-4 text-[0.7rem] text-cream-200/30 font-body">
+          <a href="https://itsadrex.com" target="_blank" rel="noopener noreferrer" className="hover:text-cream-200/50 transition-colors">
+            Made by ITS_ADREX
+          </a>
+        </p>
       </div>
     </footer>
   );

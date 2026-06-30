@@ -2,6 +2,10 @@
 
 A premium, production-ready storefront for AdireBloom built with Vite + React + Tailwind CSS, backed by a Node/Express API with Paystack payment integration.
 
+**Client handoff:** start with [HANDOFF.md](./HANDOFF.md) · [ENV-CHECKLIST.md](./ENV-CHECKLIST.md) · [PAYSTACK-LIVE.md](./PAYSTACK-LIVE.md)
+
+**WordPress rebuild:** see [wordpress/WORDPRESS-DEPLOY.md](./wordpress/WORDPRESS-DEPLOY.md)
+
 ## Stack
 
 | Layer | Tech |
@@ -9,7 +13,18 @@ A premium, production-ready storefront for AdireBloom built with Vite + React + 
 | Frontend | Vite, React 19, React Router v7, Tailwind CSS v3 |
 | Icons | Lucide React |
 | Backend | Node.js, Express |
+| Auth | Supabase (production) + Express API fallback (dev) |
 | Payments | Paystack (initialize + verify + webhook) |
+
+## Live demo
+
+| | URL |
+|---|---|
+| Website | https://adirebloomtest.netlify.app |
+| API | https://adirebloom-api.onrender.com |
+| GitHub | https://github.com/ItsADREX/AdireBloom |
+
+**Auth:** Configure Supabase — see [DOCUMENTATION.md](./DOCUMENTATION.md#sign-in-supabase)
 
 ## Getting Started
 
@@ -38,13 +53,23 @@ Backend runs at: http://localhost:4000
 **Frontend (`.env`)**
 ```
 VITE_API_URL=http://localhost:4000
+VITE_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
 ```
 
 **Backend (`server/.env`)**
 ```
 PAYSTACK_SECRET_KEY=sk_test_...
+JWT_SECRET=your-long-random-secret
 PORT=4000
-FRONTEND_URL=http://localhost:5173
+FRONTEND_URL=http://localhost:5173,https://adirebloomtest.netlify.app
+```
+
+**Netlify (production frontend)** — set in dashboard, then redeploy:
+```
+VITE_API_URL=https://adirebloom-api.onrender.com
+VITE_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
 ```
 
 Get your Paystack keys from: https://dashboard.paystack.com/#/settings/developer

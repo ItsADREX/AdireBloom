@@ -109,7 +109,6 @@ async function main() {
     });
   }
 
-  // Feature a diverse set for homepage
   const featuredIds = [928, 686, 668, 658];
   for (const prod of products) {
     if (featuredIds.includes(prod.id)) prod.featured = true;
@@ -117,9 +116,7 @@ async function main() {
 
   products.sort((a, b) => a.name.localeCompare(b.name));
 
-  const productsJs = `// Auto-generated from adirebloom.com WooCommerce API — run: node scripts/sync-assets.mjs
-
-export const categories = [
+  const productsJs = `export const categories = [
   { id: 'all', label: 'All Pieces' },
   { id: 'bespoke', label: 'Bespoke Wears' },
   { id: 'gown', label: 'Gowns' },

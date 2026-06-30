@@ -1,12 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Lock, ChevronRight } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 import { formatPrice } from '../data/products';
 import DiscountCodeField from '../components/DiscountCodeField';
-import axios from 'axios';
-
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+import { api, ensureApiReady } from '../lib/api';
 
 const nigerianStates = [
   'Abia','Adamawa','Akwa Ibom','Anambra','Bauchi','Bayelsa','Benue','Borno',
@@ -35,12 +34,23 @@ function validate(form) {
 
 export default function Checkout() {
   const { items, totals, discount, clearCart } = useCart();
+  const { user, authHeaders } = useAuth();
   const navigate = useNavigate();
 
   const [form, setForm] = useState(emptyForm);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState('');
+
+  useEffect(() => {
+    if (!user) return;
+    setForm((f) => ({
+      ...f,
+      email: f.email || user.email || '',
+      firstName: f.firstName || user.firstName || '',
+      lastName: f.lastName || user.lastName || '',
+    }));
+  }, [user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -62,6 +72,7 @@ export default function Checkout() {
     setServerError('');
 
     try {
+      await ensureApiReady();
       const orderLines = items.map((i) => ({
         productId: i.product.id,
         name: i.product.name,
@@ -70,7 +81,7 @@ export default function Checkout() {
         unitPrice: i.product.price,
       }));
 
-      const { data } = await axios.post(`${API_BASE}/api/payment/initialize`, {
+      const { data } = await api.post('/api/payment/initialize', {
         customer: {
           email: form.email,
           firstName: form.firstName,
@@ -88,7 +99,7 @@ export default function Checkout() {
         shipping: totals.shipping,
         total: totals.total,
         discountCode: discount?.code || '',
-      });
+      }, { headers: await authHeaders() });
 
       if (data.authorizationUrl) {
         clearCart();
@@ -116,7 +127,6 @@ export default function Checkout() {
   return (
     <div className="pt-28 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-xs font-body text-ink/50 mb-10">
           <Link to="/cart" className="hover:text-indigo transition-colors">Cart</Link>
           <ChevronRight size={12} />
@@ -125,9 +135,7 @@ export default function Checkout() {
 
         <form onSubmit={handleSubmit} noValidate>
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-            {/* Left — form */}
             <div className="lg:col-span-3 space-y-10">
-              {/* Contact */}
               <section>
                 <h2 className="font-display text-xl font-semibold text-ink mb-6">Contact Information</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -138,7 +146,6 @@ export default function Checkout() {
                 </div>
               </section>
 
-              {/* Shipping */}
               <section>
                 <h2 className="font-display text-xl font-semibold text-ink mb-6">Delivery Address</h2>
                 <div className="grid grid-cols-1 gap-4">
@@ -168,7 +175,6 @@ export default function Checkout() {
                 </div>
               </section>
 
-              {/* Payment note */}
               <section className="p-5 bg-cream-100 border border-cream-200">
                 <div className="flex items-start gap-3">
                   <Lock size={16} className="text-indigo mt-0.5 flex-shrink-0" />
@@ -209,7 +215,6 @@ export default function Checkout() {
               </button>
             </div>
 
-            {/* Right — summary */}
             <div className="lg:col-span-2">
               <div className="sticky top-24">
                 <h2 className="font-display text-xl font-semibold text-ink mb-6">Order Summary</h2>

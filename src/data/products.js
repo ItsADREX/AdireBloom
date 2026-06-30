@@ -1,5 +1,3 @@
-// Auto-generated from adirebloom.com WooCommerce API — run: node scripts/sync-assets.mjs
-
 export const categories = [
   { id: 'all', label: 'All Pieces' },
   { id: 'bespoke', label: 'Bespoke Wears' },
